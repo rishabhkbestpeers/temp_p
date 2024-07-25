@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center" >
+
+<% if Review.where(user_id: Current.user.id, movie_id: @movie.id)==[] %>
+  <%= form_with model: @review, url: movie_review_path do |form| %>
+    <h1 class="m-3 p-3"> Add Review and Rating </h1>
+    <div class="mb-3">
+    <h3><%= form.label :Review %></h3>
+    <%= form.text_field :content, class: "form-control", placeholder: "Review" %>
+    </div>
+    <div class="mb-3 mt-2 d-flex align-items-center ">
+    <h3 class="mb-0 me-3"><%= form.label :rating, "Rate as : " %></h3>  
+    <%= form.select :rating, options_for_select((1.0..5.0).step(0.5).map {|n| [n ,n]}, @review.rating), prompt: "Select rating", class: "form-control" %>
+    </div>
+   
+    <div class="mb-3 d-flex justify-content-center">
+    <%= form.submit "submit review", class:"btn btn-primary mt-3" %>
+    </div>
+  <% end %>
+<%else %>
+   <h1> Already Rated and Review the movie</h1>
+<% end %>
+</div>

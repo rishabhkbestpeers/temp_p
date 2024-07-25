@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center" >
+
+<%= form_with model: @user, url: user_registration_new_path  do |form| %>
+    <h1 class="m-3 p-3"> Sign Up for USER</h1>
+    <div class="mb-3">
+    <%= form.label :username %>
+    <%= form.text_field :username, class: "form-control", placeholder: "Username" %>
+    </div>
+    <div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+    <div class="mb-3 mt-2">
+    <%= form.label :role, "Register as" %>
+    <%= form.select :role, options_for_select([["Normal User",'normal'],["Admin",'admin']], selected: @user.role || 'normal'), {include_blank: 'select Role'}, class: "form-control" %>
+    </div>
+    <div class="mb-3 mt-2">
+    <%= form.label :password %> 
+    <%= form.password_field :password ,class: "form-control",placeholder: "password"%>
+    </div>
+    <div class="mb-3">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "confirm password" %>
+    </div>
+    <div class="mb-3">
+    <%= form.submit "Sign Up", class:"btn btn-primary" %>
+    </div>
+<% end %>
+
+  

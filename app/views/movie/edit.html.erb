@@ -1,0 +1,43 @@
+<h1 class="text-center mb-4">Edit Movie</h1>
+
+<div class="d-flex justify-content-center">
+  <div class="card shadow p-4" style="width: 100%; max-width: 600px;">
+    <div class="card-body">
+      <%= form_with model: @movie, url: movie_path do |form| %>
+        <div class="mb-3">
+          <%= form.label :title, "Title", class: "form-label" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+        
+        <div class="mb-3">
+          <%= form.label :release_date, "Release Date", class: "form-label" %>
+          <%= form.date_select :release_date, class: "form-control" %>
+        </div>
+        
+        <div class="mb-3">
+          <%= form.label :director, "Director", class: "form-label" %>
+          <%= form.text_field :director, class: "form-control" %>
+        </div>
+        
+        <div class="mb-3">
+          <%= form.label :cast, "Cast", class: "form-label" %>
+          <%= form.text_field :cast, class: "form-control" %>
+        </div>
+        
+        <div class="mb-3">
+          <%= form.label :about, "About", class: "form-label" %>
+          <%= form.text_area :about, rows: 5, class: "form-control" %>
+        </div>
+        
+        <div class="mb-3">
+          <%= form.label :category, "Category", class: "form-label" %>
+          <%= form.select :category, options_for_select(['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi'], @movie.category), { prompt: 'Select Category' }, class: "form-control" %>
+        </div>
+        
+        <div class="text-center">
+          <%= form.submit "Update Movie", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

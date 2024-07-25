@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center" >
+<h1>All Movies </h1>
+</div>
+<div class="row row-cols-3 g-3">
+<% @movies.each do |movie| %>
+  <div class="col">
+  <div class="d-flex m-3">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+      <h4 class="card-title"><strong class="text-primary">Name : </strong><%= movie.title.capitalize%></h4>
+      <h5 class="card-title"><strong class="text-primary">About : </strong><%= movie.about.capitalize%></h5>
+      <p class="card-text"><storng><%= %></strong></p>
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong class="text-primary">Director : </strong><%= movie.director.capitalize%></li>
+      <li class="list-group-item"><strong class="text-primary">Casts : </strong><%= movie.cast.capitalize%></li>
+      <li class="list-group-item"><strong class="text-primary">Release_date : </strong><%= movie.release_date%></li>
+      </ul>
+    <div class="d-flex card-body justify-content-center">
+      <%= link_to 'Details', movie_path(movie.id), class:"card-link" %>
+    </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+</div>

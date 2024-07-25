@@ -1,0 +1,38 @@
+<h1 class="text-center mb-4">Categories</h1>
+
+<div class="d-flex justify-content-center mb-4">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <div class="card-body">
+      <%= form_with url: category_index_path, method: :get, local: true, class: "filter-form" do %>
+        <div class="mb-3">
+          <%= label_tag :category, "Filter by Category:", class: "form-label" %>
+          <%= select_tag :category, options_for_select(['All'] + @categories, params[:category]), class: "form-select" %>
+        </div>
+        <%= submit_tag "Filter", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-3 g-3">
+<% @movies.each do |movie| %>
+  <div class="col">
+  <div class="d-flex m-3">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+      <h4 class="card-title"><strong class="text-primary">Name : </strong><%= movie.title.capitalize%></h4>
+      <h5 class="card-title"><strong class="text-primary">About : </strong><%= movie.about.capitalize%></h5>
+      <p class="card-text"><storng><%= %></strong></p>
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong class="text-primary">Director : </strong><%= movie.director.capitalize%></li>
+      <li class="list-group-item"><strong class="text-primary">Casts : </strong><%= movie.cast.capitalize%></li>
+      <li class="list-group-item"><strong class="text-primary">Release_date : </strong><%= movie.release_date%></li>
+      </ul>
+    <div class="d-flex card-body justify-content-center">
+      <%= link_to 'Details', movie_path(movie.id), class:"card-link" %>
+    </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center" >
+<%= form_with url: user_session_new_path do |form| %>
+    <h1 class="m-3 p-3"> Sign In for USER </h1>
+    <div class="mb-3">
+    <%= form.label :username %>
+    <%= form.text_field :username, class: "form-control", placeholder: "Username" %>
+    </div>
+    <div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+    <div class="mb-3">
+    <%= form.label :password %>
+    <%= form.password_field :password ,class: "form-control",placeholder: "password" %>
+    </div>
+    <div class="mb-3">
+    <%= form.submit "Sign In", class:"btn btn-primary" %>
+    </div>
+<% end %>
+</div>
