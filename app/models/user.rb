@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :reviews, dependent: :destroy
 
     enum :role, {normal:'normal', admin: 'admin'}
+
+    validates :role, presence: true
     
     has_secure_password
 

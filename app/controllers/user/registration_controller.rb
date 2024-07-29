@@ -8,7 +8,7 @@ class User::RegistrationController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            redirect_to root_path, notice: "Successfully created account"
+            redirect_to user_session_new_path, notice: "Successfully created account"
         elsif !@user.valid?
             flash[:alert] = @user.errors.full_messages[0]
             render :new, status: :unprocessable_entity

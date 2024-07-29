@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   #   get "registration/new", to: "registration#new"
   #   post "registration/new", to: "registration#create"
   # end
-
+   
+  # get "/movie/:id/edit", to: "movie#edit"
   get "user_admin", to: "admin#index"
   get "admin_user_access", to: "admin#user_access"
   delete "admin_destroy/:id", to: "admin#destroy", as: "destroy/user"

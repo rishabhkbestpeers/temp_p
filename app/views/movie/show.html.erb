@@ -20,8 +20,7 @@
     <% if Review.where(user_id: Current.user.id,movie_id:@movie.id) == []%>
       <div>
        <h5 class="card-title mt-3">Rate & Review</h5>
-       <%= link_to 'Add Review', new_movie_review_path(@movie.id), class:"btn btn-primary" %>
-       <%= link_to 'Add Rate', new_movie_review_path(@movie.id), class:"btn btn-primary" %>
+       <%= link_to 'Add Rating&Review', new_movie_review_path(@movie.id), class:"btn btn-primary mb-4" %>
       </div>
     <% end %>
   </div>

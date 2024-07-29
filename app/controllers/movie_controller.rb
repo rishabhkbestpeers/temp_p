@@ -15,9 +15,9 @@ class MovieController < ApplicationController
     def create
         @movie = Movie.new(movie_params)
         if @movie.save
-          redirect_to movie_index_path, notice: "Movie successfully created!"
+          redirect_to user_admin_path, notice: "Movie successfully created!"
         else
-          render :new
+            redirect_to user_admin_path, alert: "Movie not added!"
         end
     end
     def edit
@@ -26,21 +26,22 @@ class MovieController < ApplicationController
     def update
         @movie = Movie.find(params[:id])
         if @movie.update(movie_params)
-          redirect_to movies_path, notice: "Movie successfully updated!"
+          redirect_to user_admin_path, notice: "Movie successfully updated!"
         else
-         render :edit
+            flash[:alert] ="Something went wrong"
+            redirect_to user_admin_path, status: :unprocessable_entity
         end
     end
     
     def destroy
         @movie = Movie.find(params[:id])
         @movie.destroy
-        redirect_to movies_path, notice: "Movie successfully deleted!"
+        redirect_to user_admin_path, notice: "Movie successfully deleted!"
     end
     private
 
     def movie_params
-        params.require(:movie).permit(:title, :release_date, :director, :cast, :about, :category)
+        params.require(:movie).permit(:id,:title, :release_date, :director, :cast, :about, :category)
     end
 
     def totalrating (reviews)

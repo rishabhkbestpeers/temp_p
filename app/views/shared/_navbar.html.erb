@@ -18,7 +18,7 @@
         <% if Current.user %>
           <% if Current.user.admin? %>
             <li class="nav-item">
-             <%= link_to "All Movies", admin_path, class: "nav-link" %>
+             <%= link_to "All Movies", user_admin_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
              <%= link_to "Users Access", admin_user_access_path, class: "nav-link" %>
