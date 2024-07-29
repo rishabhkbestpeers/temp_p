@@ -19,9 +19,7 @@ class ApplicationController < ActionController::Base
                ["new", "create"].include?(params[:action])
               redirect_to root_path, notice: "You are already logged in! PLEASE LOG OUT"
             else
-              if session[:user_id].present?
-                Current.user = User.find_by(id: session[:user_id])
-              end
+              Current.user = User.find_by(id: session[:user_id])        
             end
           elsif session["session_id"].present?
             return
